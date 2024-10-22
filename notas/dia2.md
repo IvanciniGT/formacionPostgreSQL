@@ -202,3 +202,40 @@ Hace más de 20 años se crearon nuevas unidades de medida:
 1 MiB = 1024 Kibibytes
 1 KiB = 1024 Bytes
 
+---
+
+# Particionado de tablas
+
+El objetivo es conseguir tablas más pequeñas. Esto aplica cuando tenemos muchos datos.
+Para que quiero tablas más pequeñas:
+- Mejorar el rendimiento en queries
+- Mejorar el rendimiento en actualizaciones: Si configuro las tablas sobre distintos discos.
+- Mejorar los tiempos en operaciones de mnto: VACUUM, ANALIZE, REBUILD
+- Backups lógicos
+
+La gracia del particionado de postgres es que realmente lo que configuramos son varias tablas.. por separado.
+Cada una puede tener incluso INDICES DIFERENTES
+
+Lo que tenemos luego es un nombre COMUN para poder acceder a TODAS ESAS TABLAS a la vez. 
+Como si tuviera una vista que hace un UNION ALL de todas las tablas.
+
+Hay distintos métodos para particionar:
+- Por rangos de valores en una columna (Necesito datos numerales o fechas)  FECHAS
+- Por listas de valores (valores concretos)                                 ESTADOS
+- Particionado por HASH (Huella)
+  Generamos una huella de una columna (numero) y lo que hacemos es jugar con el resto de la huella al dividir entre un numero
+    ID PERSONA -> HUELLA (número) % 4 -> Personas_0, Personas_1, Personas_2, Personas_3   
+    Qué sentido tiene esto? REPARTIR EQUITATIVO DE DATOS POR PARTICIONES AL AZAR
+    Para qué casos tiene sentido?
+        - Mejorar el rendimiento en actualizaciones: Si configuro las tablas sobre distintos discos.
+        - Mejorar los tiempos en operaciones de mnto: VACUUM, ANALIZE, REBUILD
+
+Hay herramientas  (las que montan los clouds) y yo las puedo montar también on premise, que lo que hacen es:
+
+            NODO COORDINADOR
+
+    NODO1                   NODO2
+    facturas_a*      >>>>    facturas_a
+    facturas_b       <<<<    facturas_b*
+    
+    Es una forma de conseguir algo asi como un cluster ACTIVO-ACTIVO.
