@@ -1,0 +1,22 @@
+services:
+    
+    db:
+        image: postgres:17
+        container_name: mipg
+        restart: always
+        environment:
+            POSTGRES_USER: usuario
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: db
+        volumes:
+        - /home/ubuntu/environment/datos/pg:/var/lib/postgresql/data
+        ports:
+        - 5432:5432
+        
+    
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+        - 8080:8080
+

@@ -145,3 +145,60 @@ Es el siguiente paso evolutivo en el mundo de la virtualización : CONTENEDORES!
 
 CURSO CONTENEDORES, DOCKER, PODMAN <<<<
     Si pone KUBERNETES/OPENSHIFT NO !!!!
+    
+    
+---
+Las primeras instalaciones las haremos mediante contenedores.
+A efectos prácticos es como una máquina virtual.
+Nos vamos a descargar una imagen de contenedor: Imagen ISO de SO
+En imagen YA VIENE UN POSTGRES instalador de antemano por la gente de postgres.
+
+---
+
+# Colación / Collates
+
+La colación no es el juego de caracteres.
+El juego de caracteres es el JUEGO DE CARACTERES.
+El collate es otra cosa MUY DIFERENTE!
+
+El collate es cómo se interpretan TEXTOS en las operaciones que hago en la BBDD. Por ejemplo:
+
+TABLA
+| id  |  nombre   |
+|  1  |  Felipe   |
+|  2  |  federico |
+|  3  |  menchu   |
+
+SELECT nombre FROM tabla ORDER BY nombre;
+Felipe
+federico
+menchu
+
+A no ser que use un COLLATE que no distinga entre Mayúsculas y Minúsculas
+
+ACENTOS O SIN ACENTOS
+
+
+
+----
+
+
+Al contratar el servidor hemos cogido uno de 8Gib: 8 gigabytes? 8 Gibibytes
+
+1 Gb = 1024 Mb 
+1 Mb = 1024 Kb
+1 Kb = 1024 bytes
+
+Esto CAMBIO HACE MAS DE 20 AÑOS. Antes era así! YA NO!
+Hoy en día:
+
+1 Gb = 1000 Mb 
+1 Mb = 1000 Kb
+1 Kb = 1000 bytes
+
+Hace más de 20 años se crearon nuevas unidades de medida:
+
+1 Gibibyte = 1024 Mebibytes
+1 MiB = 1024 Kibibytes
+1 KiB = 1024 Bytes
+
