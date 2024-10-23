@@ -31,3 +31,7 @@ VACUUM inscripciones;
 
 
 SELECT * FROM pgstattuple('cursos');
+
+
+SELECT * FROM pg_indexes;
+SELECT * FROM pg_stat_user_indexes;

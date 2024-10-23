@@ -8,7 +8,7 @@ DROP INDEX IF EXISTS peliculas_nombre_idx;
 DROP INDEX IF EXISTS peliculas_director_idx;
 DROP TABLE IF EXISTS tematicas;
 DROP TABLE IF EXISTS directores;
-DROP TABLE IF EXISTS usuarios;
+--DROP TABLE IF EXISTS usuarios;
 
 -- Tablas
 
@@ -131,8 +131,7 @@ ALTER TABLE visualizaciones ADD CONSTRAINT visualizaciones_usuario_pelicula_fech
 -- por otros campos: USUARIO: Dame las peliculas que ya ha visto este usuario
 --  DEBERIAMOS plantear el crear un índice para esa columna
 
-DROP INDEX visualizaciones_usuario_idx;
-CREATE INDEX visualizaciones_usuario_idx ON visualizaciones_2024 USING hash (usuario) ;
+--DROP INDEX visualizaciones_usuario_idx;
 
     
     
@@ -145,3 +144,5 @@ CREATE TABLE visualizaciones_2024 PARTITION OF visualizaciones
 -- El año que viene, crear otra tabla
 CREATE TABLE visualizaciones_2025 PARTITION OF visualizaciones
     FOR VALUES FROM ('2025-01-01') TO ('2026-01-01') ;
+    
+CREATE INDEX visualizaciones_usuario_idx ON visualizaciones_2024 USING hash (usuario) ;

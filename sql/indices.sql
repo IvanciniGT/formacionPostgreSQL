@@ -67,3 +67,11 @@ FROM empresas
 WHERE nombre % 'Manolo';
 
 -- Vodafone TV: BUSCAR
+
+
+EXPLAIN SELECT id
+FROM Cursos
+WHERE to_tsvector('spanish',Titulo) @@ to_tsquery('spanish','postgresql');
+
+SELECT * FROM CURSOS;
+SELECT to_tsquery('spanish','postgresql & introduccion');

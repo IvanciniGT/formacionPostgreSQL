@@ -4,19 +4,19 @@ from faker import Faker
 
 # Configuración de la conexión
 db_config = {
-    'dbname': 'bd',
-    'user': 'postgres',
-    'password': 'Pa$$w0rd',
-    'host': '172.31.0.71',
+    'dbname': 'db',
+    'user': 'usuario',
+    'password': 'password',
+    'host': '172.31.12.148',
     'port': '5432'
 }
 
 # Constantes para el número de registros
-NUM_USERS = 10
-NUM_DIRECTORS = 5
-NUM_TEMATICS = 2
-NUM_MOVIES = 1
-NUM_VISUALIZATIONS = 2
+NUM_USERS = 1000*1000
+NUM_DIRECTORS = 5*1000
+NUM_TEMATICS = 200
+NUM_MOVIES = 1000*1000
+NUM_VISUALIZATIONS = 10*1000*1000
 
 # Conexión a la base de datos
 try:
@@ -127,7 +127,7 @@ def insert_visualizations(num_visualizations):
 
 # Ejecución de las funciones de inserción
 try:
-    insert_users(NUM_USERS)           # Insertar usuarios
+    #insert_users(NUM_USERS)           # Insertar usuarios
     insert_directors(NUM_DIRECTORS)        # Insertar directores
     insert_tematics(NUM_TEMATICS)         # Insertar temáticas
     insert_movies(NUM_MOVIES)          # Insertar películas
