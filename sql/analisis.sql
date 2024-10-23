@@ -21,3 +21,13 @@ WHERE
 -- En postgres hay muchas funciones que por defecto vienen deshabilitadas
 CREATE EXTENSION IF NOT EXISTS pgstattuple;
 SELECT * FROM pgstattuple('cursos');
+
+DELETE FROM inscripciones WHERE CursoId = 6 AND PersonaId = 4;
+VACUUM ANALYZE inscripciones;
+ANALYZE inscripciones;
+VACUUM inscripciones;
+--ANALYZE VACUUM inscripciones; NO
+-- Carga masiva de datos: NO ME HACE FALTA HACER UN VACUUM... pero puedo querer hacer un analyze de ciertas columnas (FECHAS, ID, ...)
+
+
+SELECT * FROM pgstattuple('cursos');

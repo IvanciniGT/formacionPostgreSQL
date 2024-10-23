@@ -1,0 +1,5 @@
+service:
+
+    cargador:
+        build:
+            context: .
