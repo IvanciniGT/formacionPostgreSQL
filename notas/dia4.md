@@ -334,3 +334,11 @@ Esto nos genera la carpeta de backup Y dentro tenemos un archivo de configuraci√
 
 Arrancar un servidor nuevo, que trabaje contra estos archivos...
 Y listo! YA se ponen a hablar entre ellos.
+
+
+sudo cp -p /etc/postgresql/17/main/postgresql.conf ~/environment/curso/instalaciones/replica
+
+sudo cp -p /etc/postgresql/17/main/pg_ident.conf ~/environment/curso/instalaciones/replica
+
+sudo cp -p /etc/postgresql/17/main/pg_hba.conf ~/environment/curso/instalaciones/replica
+

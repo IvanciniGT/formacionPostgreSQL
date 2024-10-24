@@ -10,9 +10,9 @@ services:
             POSTGRES_DB: db
         volumes:
         - /var/lib/postgresql/17/backupReplicacion:/var/lib/postgresql/data
-        - /etc/postgresql/17/main/postgres.conf:/var/lib/postgresql/data/postgres.conf
-        - /etc/postgresql/17/main/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
-        - /etc/postgresql/17/main/pg_ident.conf:/var/lib/postgresql/data/pg_ident.conf
+        - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+        - ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+        - ./pg_ident.conf:/var/lib/postgresql/data/pg_ident.conf
         ports:
         - 5433:5432
             #    # Puerto en el que funciona la app en el contenedor
