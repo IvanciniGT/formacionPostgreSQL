@@ -1,0 +1,10 @@
+services:
+    
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+        - 8080:8080
+
+# ejecutar `docker compose up` en la misma carpeta donde esta este fichero
+# CTRL + C si va bien y después lo arrancamos en segundo plano: `docker compose up -d`

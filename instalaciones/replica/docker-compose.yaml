@@ -1,0 +1,22 @@
+services:
+    
+    db:
+        image: postgres:17
+        container_name: mireplica
+        restart: always
+        environment:
+            POSTGRES_USER: usuario
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: db
+        volumes:
+        - /var/lib/postgresql/17/backupReplicacion:/var/lib/postgresql/data
+        - /etc/postgresql/17/main/postgres.conf:/var/lib/postgresql/data/postgres.conf
+        - /etc/postgresql/17/main/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+        - /etc/postgresql/17/main/pg_ident.conf:/var/lib/postgresql/data/pg_ident.conf
+        ports:
+        - 5433:5432
+            #    # Puerto en el que funciona la app en el contenedor
+            #
+            # El puerto que quiero mapear en el host para poder atacar al contenedor usando las
+            # ips del host directamente
+        
