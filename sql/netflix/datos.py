@@ -4,19 +4,19 @@ from faker import Faker
 
 # Configuración de la conexión
 db_config = {
-    'dbname': 'db',
-    'user': 'usuario',
+    'dbname': 'postgres',
+    'user': 'postgres',
     'password': 'password',
-    'host': '172.31.12.148',
-    'port': '5432'
+    'host': '172.31.38.8',
+    'port': '5433'
 }
 
 # Constantes para el número de registros
-NUM_USERS = 1000*1000
-NUM_DIRECTORS = 5*1000
+NUM_USERS = 1000
+NUM_DIRECTORS = 500
 NUM_TEMATICS = 200
-NUM_MOVIES = 1000*1000
-NUM_VISUALIZATIONS = 10*1000*1000
+NUM_MOVIES = 100*1000
+NUM_VISUALIZATIONS = 1000
 
 # Conexión a la base de datos
 try:
@@ -50,11 +50,14 @@ def insert_users(num_users):
         emails.add(email)
         
         nombre = fake.name()
-        if not execute_query(
-            sql.SQL("INSERT INTO usuarios (email, nombre) VALUES (%s, %s)"),
-            [email, nombre]
-        ):
-            break
+        try:
+            execute_query(
+                sql.SQL("INSERT INTO usuarios (email, nombre) VALUES (%s, %s)"),
+                [email, nombre]
+            )
+        except:
+            print("Fallo en uno")
+            #break
     conn.commit()
     print(f'{num_users} usuarios insertados.')
 
@@ -127,11 +130,11 @@ def insert_visualizations(num_visualizations):
 
 # Ejecución de las funciones de inserción
 try:
-    #insert_users(NUM_USERS)           # Insertar usuarios
-    insert_directors(NUM_DIRECTORS)        # Insertar directores
-    insert_tematics(NUM_TEMATICS)         # Insertar temáticas
-    insert_movies(NUM_MOVIES)          # Insertar películas
-    insert_visualizations(NUM_VISUALIZATIONS)  # Insertar visualizaciones
+    insert_users(NUM_USERS)           # Insertar usuarios
+    #insert_directors(NUM_DIRECTORS)        # Insertar directores
+    #insert_tematics(NUM_TEMATICS)         # Insertar temáticas
+    #insert_movies(NUM_MOVIES)          # Insertar películas
+    #insert_visualizations(NUM_VISUALIZATIONS)  # Insertar visualizaciones
 finally:
     # Cerrar la conexión
     cur.close()
